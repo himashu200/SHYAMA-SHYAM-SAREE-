@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHYAMA SHYAM SAREE · Clothing</title>
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+    }
+
+    body {
+      background: #fcf7f2;
+      color: #2d2a24;
+      line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* header / navbar */
+    header {
+      background: #1e2b2c;
+      color: #efe6d7;
+      padding: 1rem 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 4px solid #b4946a;
+    }
+
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+    .logo span {
+      font-weight: 300;
+      color: #dac09a;
+    }
+
+    nav {
+      display: flex;
+      gap: 1.8rem;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #efe6d7;
+      text-decoration: none;
+      font-weight: 400;
+      padding: 0.4rem 0;
+      border-bottom: 2px solid transparent;
+      transition: 0.25s;
+      font-size: 1.05rem;
+    }
+
+    nav a:hover, nav a.active {
+      border-bottom-color: #dac09a;
+      color: #fff;
+    }
+
+    /* main container */
+    .container {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      flex: 1;
+    }
+
+    /* page sections (display toggle) */
+    .page {
+      display: none;
+      animation: fade 0.3s ease;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes fade {
+      0% { opacity: 0.4; }
+      100% { opacity: 1; }
+    }
+
+    /* cards & content */
+    .card {
+      background: #ffffffec;
+      padding: 2rem 2.5rem;
+      border-radius: 20px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.05);
+      border: 1px solid #e5dbd0;
+    }
+
+    .card h2 {
+      font-size: 2rem;
+      font-weight: 400;
+      color: #1e2b2c;
+      border-left: 6px solid #b4946a;
+      padding-left: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .card h3 {
+      font-weight: 500;
+      color: #3d3a32;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .brand-highlight {
+      background: #f5ede4;
+      padding: 1.5rem;
+      border-radius: 16px;
+      margin: 1.8rem 0;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.8rem;
+      margin: 1.5rem 0;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: #faf6f0;
+      padding: 1rem 1.2rem;
+      border-radius: 60px;
+      border: 1px solid #e2d5c6;
+    }
+
+    .contact-item i {
+      font-size: 1.6rem;
+      width: 2rem;
+      color: #7f6b52;
+    }
+
+    .contact-item a {
+      color: #1e2b2c;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-item a:hover {
+      color: #7f5e3a;
+    }
+
+    .address-block {
+      background: #f5ede4;
+      padding: 1.2rem 1.8rem;
+      border-radius: 60px;
+      display: inline-block;
+      margin: 0.5rem 0;
+      font-weight: 500;
+    }
+
+    .policy-list, .terms-list {
+      padding-left: 1.8rem;
+      margin: 0.8rem 0 1.5rem;
+    }
+
+    .policy-list li, .terms-list li {
+      margin-bottom: 0.7rem;
+    }
+
+    .footer-note {
+      margin-top: 3rem;
+      text-align: center;
+      border-top: 1px solid #dacfc2;
+      padding-top: 2rem;
+      color: #4d4a42;
+      font-size: 0.95rem;
+    }
+
+    .footer-note i {
+      color: #9b846b;
+      margin: 0 4px;
+    }
+
+    .copyright {
+      font-weight: 400;
+      letter-spacing: 0.3px;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid #b4946a;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      color: #efe6d7;
+      transition: 0.2s;
+      cursor: default;
+    }
+
+    /* responsive */
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.8rem;
+        padding: 1rem;
+      }
+      nav {
+        justify-content: center;
+        gap: 1rem;
+      }
+      .card {
+        padding: 1.5rem;
+      }
+      .contact-item {
+        border-radius: 30px;
+        padding: 0.8rem 1.2rem;
+      }
+      .address-block {
+        border-radius: 30px;
+        padding: 0.8rem 1.2rem;
+        font-size: 0.95rem;
+      }
+    }
+
+    @media (max-width: 450px) {
+      .logo h1 {
+        font-size: 1.4rem;
+      }
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* small extra */
+    .badge-nature {
+      background: #dac09a;
+      color: #1e2b2c;
+      padding: 0.2rem 1rem;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      display: inline-block;
+      margin-top: 0.2rem;
+    }
+    .inline-icon {
+      margin-right: 8px;
+      color: #7f6b52;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    <h1>SHYAMA SHYAM <span>SAREE</span></h1>
+    <div style="font-size: 0.8rem; letter-spacing: 1px; opacity: 0.8; margin-top: 2px;">
+      <i class="fas fa-tshirt"></i> CLOTHING
+    </div>
+  </div>
+  <nav id="navMenu">
+    <a href="#" class="active" data-page="home"><i class="fas fa-home"></i> Home</a>
+    <a href="#" data-page="contact"><i class="fas fa-address-card"></i> Contact</a>
+    <a href="#" data-page="privacy"><i class="fas fa-shield-alt"></i> Privacy</a>
+    <a href="#" data-page="terms"><i class="fas fa-file-contract"></i> Terms</a>
+  </nav>
+</header>
+
+<div class="container">
+
+  <!-- HOME PAGE -->
+  <section id="home" class="page active">
+    <div class="card">
+      <h2><i class="fas fa-store-alt" style="color: #b4946a; margin-right: 12px;"></i> SHYAMA SHYAM SAREE</h2>
+      <div class="brand-highlight">
+        <p style="font-size: 1.2rem; font-weight: 300;"><i class="fas fa-tag" style="color: #7f6b52;"></i> Nature of Business: <strong>CLOTHING</strong></p>
+        <p style="margin-top: 0.2rem;"><i class="fas fa-map-pin" style="color: #7f6b52;"></i> OPP SANJEEVANI HOSPITAL BAREILLY SARAI SAMBHAL UP 244302</p>
+      </div>
+
+      <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: space-between; align-items: center;">
+        <div>
+          <p><i class="fas fa-phone-alt inline-icon"></i> <strong>9389044741</strong></p>
+          <p><i class="fas fa-envelope inline-icon"></i> <a href="mailto:Madanmanish63@yahoo.com" style="color: #1e2b2c; text-decoration: none;">Madanmanish63@yahoo.com</a></p>
+        </div>
+        <div>
+          <span class="badge-nature"><i class="fas fa-ribbon"></i> since 2025</span>
+        </div>
+      </div>
+
+      <hr style="margin: 2rem 0; border: 0; border-top: 2px dashed #dacfc2;">
+
+      <p style="font-size: 1.1rem; font-weight: 300; max-width: 700px;">
+        <i class="fas fa-quote-left" style="color: #b4946a; opacity: 0.6;"></i> 
+        Traditional elegance woven with modern comfort — SHYAMA SHYAM SAREE brings you the finest clothing for every occasion.
+      </p>
+
+      <!-- quick links to other pages -->
+      <div style="margin-top: 2rem; display: flex; flex-wrap: wrap; gap: 1rem;">
+        <a href="#" data-page="contact" class="nav-inline" style="background: #1e2b2c; color: #efe6d7; padding: 0.6rem 1.6rem; border-radius: 40px; text-decoration: none; font-weight: 400;">📞 Contact Us</a>
+        <a href="#" data-page="privacy" class="nav-inline" style="background: #e5dbd0; color: #1e2b2c; padding: 0.6rem 1.6rem; border-radius: 40px; text-decoration: none;">🔒 Privacy Policy</a>
+        <a href="#" data-page="terms" class="nav-inline" style="background: #e5dbd0; color: #1e2b2c; padding: 0.6rem 1.6rem; border-radius: 40px; text-decoration: none;">📄 Terms & Conditions</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT PAGE -->
+  <section id="contact" class="page">
+    <div class="card">
+      <h2><i class="fas fa-address-card" style="color: #b4946a; margin-right: 12px;"></i> Contact</h2>
+      
+      <div class="contact-grid">
+        <div class="contact-item">
+          <i class="fas fa-phone-alt"></i>
+          <a href="tel:9389044741">9389044741</a>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:Madanmanish63@yahoo.com">Madanmanish63@yahoo.com</a>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-building"></i>
+          <span>CLOTHING</span>
+        </div>
+      </div>
+
+      <div class="address-block">
+        <i class="fas fa-map-marker-alt" style="margin-right: 12px; color: #7f6b52;"></i> 
+        OPP SANJEEVANI HOSPITAL BAREILLY SARAI SAMBHAL UP 244302
+      </div>
+
+      <div style="margin-top: 2rem; background: #f5ede4; padding: 1.5rem; border-radius: 20px;">
+        <h3 style="margin-top: 0;"><i class="fas fa-clock" style="color: #7f6b52;"></i> Business hours</h3>
+        <p>Mon – Sat : 10:00 AM – 8:00 PM</p>
+        <p style="margin-top: 0.2rem;">Sunday : closed</p>
+        <p style="margin-top: 0.8rem;"><i class="fas fa-tag"></i> For queries, reach out via call or email.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVACY POLICY -->
+  <section id="privacy" class="page">
+    <div class="card">
+      <h2><i class="fas fa-shield-alt" style="color: #b4946a; margin-right: 12px;"></i> Privacy Policy</h2>
+      <p><strong>Effective date:</strong> 2026</p>
+      <p style="margin: 1rem 0;">At <strong>SHYAMA SHYAM SAREE</strong>, we respect your privacy. This policy outlines how we handle your personal information.</p>
+      
+      <ul class="policy-list">
+        <li><i class="fas fa-check-circle" style="color: #7f6b52; width: 1.4rem;"></i> We collect only necessary contact details (name, email, phone) for order processing and communication.</li>
+        <li><i class="fas fa-check-circle" style="color: #7f6b52; width: 1.4rem;"></i> Your data is never shared with third parties without your explicit consent.</li>
+        <li><i class="fas fa-check-circle" style="color: #7f6b52; width: 1.4rem;"></i> We use secure servers and follow industry standards to protect your information.</li>
+        <li><i class="fas fa-check-circle" style="color: #7f6b52; width: 1.4rem;"></i> You may request to review, update, or delete your personal data at any time.</li>
+        <li><i class="fas fa-check-circle" style="color: #7f6b52; width: 1.4rem;"></i> This policy applies to all interactions with SHYAMA SHYAM SAREE.</li>
+      </ul>
+
+      <p>For any privacy concerns, please <a href="#" data-page="contact" style="color: #7f5e3a; font-weight: 500;">contact us</a>.</p>
+      <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.7;">Last updated: July 2026</p>
+    </div>
+  </section>
+
+  <!-- TERMS & CONDITIONS -->
+  <section id="terms" class="page">
+    <div class="card">
+      <h2><i class="fas fa-file-contract" style="color: #b4946a; margin-right: 12px;"></i> Terms & Conditions</h2>
+      <p>Welcome to <strong>SHYAMA SHYAM SAREE</strong>. By using our services, you agree to the following terms:</p>
+      
+      <ul class="terms-list">
+        <li><i class="fas fa-arrow-right" style="color: #7f6b52; width: 1.4rem;"></i> <strong>Products:</strong> Our clothing items are described with accuracy, but slight variations may occur.</li>
+        <li><i class="fas fa-arrow-right" style="color: #7f6b52; width: 1.4rem;"></i> <strong>Orders:</strong> All orders are subject to availability. We reserve the right to cancel or adjust orders.</li>
+        <li><i class="fas fa-arrow-right" style="color: #7f6b52; width: 1.4rem;"></i> <strong>Pricing:</strong> Prices are listed in INR and may change without prior notice.</li>
+        <li><i class="fas fa-arrow-right" style="color: #7f6b52; width: 1.4rem;"></i> <strong>Shipping:</strong> We ship to the address provided; delivery times are estimates.</li>
+        <li><i class="fas fa-arrow-right" style="color: #7f6b52; width: 1.4rem;"></i> <strong>Returns:</strong> Return requests must be made within 7 days of receipt, subject to our return policy.</li>
+        <li><i class="fas fa-arrow-right" style="color: #7f6b52; width: 1.4rem;"></i> <strong>Governing law:</strong> These terms are governed by the laws of India, Uttar Pradesh.</li>
+      </ul>
+
+      <p>By placing an order, you accept these terms. For any questions, please <a href="#" data-page="contact" style="color: #7f5e3a; font-weight: 500;">reach out</a>.</p>
+      <p style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.7;">Last updated: July 2026</p>
+    </div>
+  </section>
+
+  <!-- footer / copyright -->
+  <div class="footer-note">
+    <p class="copyright">
+      <i class="far fa-copyright"></i> <strong>SHYAMA SHYAM SAREE</strong> . All rights reserved.
+    </p>
+    <p style="margin-top: 0.3rem; font-size: 0.85rem; opacity: 0.8;">
+      <i class="fas fa-store"></i> OPP SANJEEVANI HOSPITAL BAREILLY SARAI SAMBHAL UP 244302
+    </p>
+  </div>
+
+</div>
+
+<script>
+  (function() {
+    const navLinks = document.querySelectorAll('#navMenu a');
+    const pages = {
+      home: document.getElementById('home'),
+      contact: document.getElementById('contact'),
+      privacy: document.getElementById('privacy'),
+      terms: document.getElementById('terms')
+    };
+
+    // also handle inline nav links (inside home page)
+    const inlineNavLinks = document.querySelectorAll('.nav-inline');
+
+    function setActivePage(pageId) {
+      // hide all pages
+      Object.keys(pages).forEach(key => {
+        pages[key].classList.remove('active');
+      });
+      // show selected
+      if (pages[pageId]) {
+        pages[pageId].classList.add('active');
+      }
+
+      // update nav active class
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        const dataPage = link.getAttribute('data-page');
+        if (dataPage === pageId) {
+          link.classList.add('active');
+        }
+      });
+
+      // scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // nav click handler
+    navLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const pageId = this.getAttribute('data-page');
+        if (pageId) {
+          setActivePage(pageId);
+        }
+      });
+    });
+
+    // inline nav links (from home page)
+    inlineNavLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const pageId = this.getAttribute('data-page');
+        if (pageId) {
+          setActivePage(pageId);
+        }
+      });
+    });
+
+    // additionally, any link inside pages that has data-page (for contact link inside privacy/terms)
+    document.querySelectorAll('[data-page]').forEach(el => {
+      if (el.tagName === 'A' && el.closest('.page')) {
+        el.addEventListener('click', function(e) {
+          e.preventDefault();
+          const pageId = this.getAttribute('data-page');
+          if (pageId) {
+            setActivePage(pageId);
+          }
+        });
+      }
+    });
+
+    // set default home active if hash not set
+    if (!window.location.hash) {
+      setActivePage('home');
+    } else {
+      // if hash exists, try to match
+      const hash = window.location.hash.replace('#', '');
+      if (pages[hash]) {
+        setActivePage(hash);
+      } else {
+        setActivePage('home');
+      }
+    }
+
+    // small extra: handle hash change
+    window.addEventListener('hashchange', function() {
+      const hash = window.location.hash.replace('#', '');
+      if (pages[hash]) {
+        setActivePage(hash);
+      }
+    });
+  })();
+</script>
+
+</body>
+</html>
